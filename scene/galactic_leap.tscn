@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddwvksnjdw32m"]
+
+[ext_resource type="PackedScene" uid="uid://dlyu1kr0so6t3" path="res://scene/player.tscn" id="1_a87mx"]
+[ext_resource type="Script" path="res://script/galactic_leap.gd" id="1_fb0co"]
+[ext_resource type="PackedScene" uid="uid://crs6jvc31yo8d" path="res://scene/platform.tscn" id="2_fopn4"]
+[ext_resource type="PackedScene" uid="uid://gxog1047yr4b" path="res://scene/tramp_platform.tscn" id="3_k6vum"]
+[ext_resource type="PackedScene" uid="uid://cgvsd40q47p0x" path="res://scene/broken_platform.tscn" id="4_1acmn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jq5wj"]
+size = Vector2(360, 40)
+
+[node name="galactic_leap" type="Node2D"]
+script = ExtResource("1_fb0co")
+scene_platform = Array[PackedScene]([ExtResource("2_fopn4"), ExtResource("3_k6vum"), ExtResource("4_1acmn")])
+
+[node name="Player" parent="." instance=ExtResource("1_a87mx")]
+position = Vector2(180, 320)
+
+[node name="platform_container" type="Node2D" parent="."]
+
+[node name="platform" parent="platform_container" instance=ExtResource("2_fopn4")]
+position = Vector2(180, 500)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(180, 320)
+
+[node name="platform_eraser" type="Area2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/platform_eraser"]
+position = Vector2(0, 370)
+shape = SubResource("RectangleShape2D_jq5wj")
+
+[node name="Score" type="Label" parent="Camera2D"]
+offset_left = -178.0
+offset_top = -317.0
+offset_right = 176.0
+offset_bottom = -294.0
+text = "0"
+
+[connection signal="body_entered" from="Camera2D/platform_eraser" to="." method="_on_platform_eraser_body_entered"]
