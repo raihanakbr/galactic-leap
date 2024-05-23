@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_6epck"]
 [ext_resource type="Texture2D" uid="uid://dnamdeqrh40jy" path="res://assets/character/Sprite-0002.png" id="1_vjbid"]
+[ext_resource type="PackedScene" uid="uid://ciw5gf0xj06li" path="res://scene/dash_sprite.tscn" id="2_buxk7"]
 [ext_resource type="Texture2D" uid="uid://dn8t7w2ms54n" path="res://icon.svg" id="3_265jl"]
 [ext_resource type="Script" path="res://script/weapon.gd" id="3_yweqr"]
-[ext_resource type="PackedScene" uid="uid://daj3aqx71v4i1" path="res://scene/dash.tscn" id="5_kl1wj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5rqji"]
 animations = [{
@@ -22,6 +22,7 @@ size = Vector2(26, 38)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_6epck")
+dash_scene = ExtResource("2_buxk7")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -40,6 +41,5 @@ script = ExtResource("3_yweqr")
 
 [node name="Marker2D" type="Marker2D" parent="weapon"]
 
-[node name="dash" parent="." instance=ExtResource("5_kl1wj")]
-position = Vector2(-8.5, 3.5)
-scale = Vector2(0.273438, 0.101563)
+[node name="dash_timer" type="Timer" parent="."]
+one_shot = true

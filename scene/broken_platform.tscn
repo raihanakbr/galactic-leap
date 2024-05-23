@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8nlba"]
 size = Vector2(20, 7)
 
-[node name="broken_platform" type="StaticBody2D"]
+[node name="broken_platform" type="StaticBody2D" groups=["platform"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_facqb")
 metadata/_edit_group_ = true
