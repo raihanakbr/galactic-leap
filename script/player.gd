@@ -5,8 +5,8 @@ extends CharacterBody2D
 
 #Dashing
 @export var dash_ghost: PackedScene
-@export var dash_speed: float = 1200.0
-@export var dash_length = 0.1
+@export var dash_speed: float = 2000.0
+@export var dash_length = 0.002
 var can_dash: bool = true
 var dash_direction: Vector2
 var facing_direction: int = -1

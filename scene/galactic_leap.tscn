@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddwvksnjdw32m"]
+[gd_scene load_steps=11 format=3 uid="uid://ddwvksnjdw32m"]
 
 [ext_resource type="PackedScene" uid="uid://dlyu1kr0so6t3" path="res://scene/player.tscn" id="1_a87mx"]
 [ext_resource type="Script" path="res://script/galactic_leap.gd" id="1_fb0co"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://gxog1047yr4b" path="res://scene/tramp_platform.tscn" id="3_k6vum"]
 [ext_resource type="PackedScene" uid="uid://cgvsd40q47p0x" path="res://scene/broken_platform.tscn" id="4_1acmn"]
 [ext_resource type="PackedScene" uid="uid://dnkad25f5gwpf" path="res://scene/platform_on_boss.tscn" id="5_uvy8n"]
+[ext_resource type="PackedScene" uid="uid://ccbffqj4qs7hy" path="res://scene/side_platform_on_boss.tscn" id="6_ve4fs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcli3"]
 size = Vector2(24.5, 637)
@@ -18,7 +19,7 @@ size = Vector2(359, 20)
 
 [node name="galactic_leap" type="Node2D"]
 script = ExtResource("1_fb0co")
-scene_platform = Array[PackedScene]([ExtResource("2_fopn4"), ExtResource("3_k6vum"), ExtResource("4_1acmn"), ExtResource("5_uvy8n")])
+scene_platform = Array[PackedScene]([ExtResource("2_fopn4"), ExtResource("3_k6vum"), ExtResource("4_1acmn"), ExtResource("5_uvy8n"), ExtResource("6_ve4fs")])
 
 [node name="Player" parent="." instance=ExtResource("1_a87mx")]
 position = Vector2(180, 320)

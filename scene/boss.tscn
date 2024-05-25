@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kw5ld"]
 size = Vector2(360, 39)
 
-[node name="Area2D" type="Area2D" groups=["boss"]]
+[node name="Area2D" type="StaticBody2D" groups=["boss"]]
 script = ExtResource("1_jhq03")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -17,5 +17,3 @@ shape = SubResource("RectangleShape2D_kw5ld")
 modulate = Color(1, 0.0901961, 0.443137, 1)
 scale = Vector2(2.8125, 0.300781)
 texture = ExtResource("1_woc2g")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]

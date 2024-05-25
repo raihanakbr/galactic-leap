@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccbffqj4qs7hy"]
+
+[ext_resource type="Script" path="res://script/side_platform_on_boss.gd" id="1_nqho7"]
+[ext_resource type="Texture2D" uid="uid://hvhbxnwni6ww" path="res://assets/platform/Sprite-0003.png" id="2_f5qo0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_budln"]
+size = Vector2(20, 7)
+
+[node name="platform" type="StaticBody2D" groups=["platform"]]
+scale = Vector2(2, 2)
+script = ExtResource("1_nqho7")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_f5qo0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_budln")
+one_way_collision = true

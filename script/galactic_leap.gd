@@ -24,6 +24,10 @@ var noise_i: float = 0.0
 var shake_strength: float = 0.0
 
 var boss = preload("res://scene/boss.tscn")
+var boss_instance
+var boss_platform
+var left_platform
+var right_platform
 
 var score = 0
 var additonal_score = 0
@@ -42,6 +46,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	score_update()
+	print(boss_fighting)
 	if not boss_fighting:
 		if player.position.y < camera.position.y:
 			camera.position.y = player.position.y
@@ -61,9 +66,9 @@ func _process(delta: float) -> void:
 
 func generate_platform_on_boss() -> void:
 	platform_y_pos -= randf_range(60, 80)
-	var new_platform = scene_platform[3].instantiate() as StaticBody2D
-	new_platform.position = Vector2(180, platform_y_pos)
-	platform_container.call_deferred("add_child", new_platform)
+	boss_platform = scene_platform[3].instantiate() as StaticBody2D
+	boss_platform.position = Vector2(180, platform_y_pos)
+	platform_container.call_deferred("add_child", boss_platform)
 
 func level_generator(amount: int) -> void:
 	for i in amount:
@@ -103,20 +108,60 @@ func score_update() -> void:
 	score_label.text = str(int(score + additonal_score))
 
 func _on_area_2d_body_entered(body) -> void:
-	if body.is_in_group("boss_platform"):
+	if body.is_in_group("boss_platform") and to_boss_fight:
 		boss_fighting = true
 		await get_tree().create_timer(2).timeout
 		spawn_boss()
 		
+func toggle_boss_platfom(b: bool) -> void:
+	boss_platform.visible = b
+	for child in boss_platform.get_children():
+		if child is CollisionShape2D:
+			child.disabled = not b
+		
+func toggle_side_platform():
+	if left_platform != null:
+		right_platform = scene_platform[4].instantiate() as StaticBody2D
+		right_platform.position = Vector2(randf_range(195, 345), platform_y_pos - randf_range(10, 50))
+		platform_container.call_deferred("add_child", right_platform)
+		await get_tree().create_timer(0.9).timeout
+		left_platform.queue_free()
+	else:
+		left_platform = scene_platform[4].instantiate() as StaticBody2D
+		left_platform.position = Vector2(randf_range(15, 165), platform_y_pos - randf_range(10, 50))
+		platform_container.call_deferred("add_child", left_platform)
+		await get_tree().create_timer(0.9).timeout
+		right_platform.queue_free()
+	await get_tree().create_timer(1.5).timeout
+		
+func boss_platform_attack() -> void:
+	left_platform = scene_platform[4].instantiate() as StaticBody2D
+	left_platform.position = Vector2(randf_range(15, 165), platform_y_pos - randf_range(10, 50))
+	platform_container.call_deferred("add_child", left_platform)
+	
+	await get_tree().create_timer(2).timeout
+	toggle_boss_platfom(false)
+	await get_tree().create_timer(1).timeout
+	
+	for i in range(11):
+		await toggle_side_platform()
+	
+	toggle_boss_platfom(true)
+	await get_tree().create_timer(0.3).timeout
+	right_platform.queue_free()
+	boss_instance.attack_completed.emit()
+		
 func spawn_boss() -> void:
-	var boss_instance = boss.instantiate()
+	boss_instance = boss.instantiate()
 	boss_position = Vector2(180, platform_y_pos - 588)
 	boss_instance.global_position = boss_position
 	boss_instance.apply_shake.connect(apply_shake)
+	boss_instance.platform_attack.connect(boss_platform_attack)
 	boss_instance.additional_score.connect(add_score_from_enemy_hit)
 	boss_instance.end_phase.connect(end_boss_phase)
 	camera.add_child(boss_instance)
-	boss_instance.start(player)
+	await boss_instance.start(player)
+	end_boss_phase()
 
 func end_boss_phase() -> void:
 	target_score_for_boss += score_needed_between_boss

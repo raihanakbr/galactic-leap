@@ -1,8 +1,10 @@
-extends Area2D
+extends StaticBody2D
 
 signal end_phase()
 signal additional_score(num)
 signal apply_shake()
+signal platform_attack()
+signal attack_completed
 
 var level = 1
 var player
@@ -22,9 +24,11 @@ func start(player_node) -> void:
 	player = player_node
 	if level == 1:
 		await behavior_one()
-	#level += 1
+	if level >= 2:
+		await behavior_two()
+	level += 1
 	await get_tree().create_timer(1).timeout
-	emit_signal("end_phase")
+	#emit_signal("end_phase")
 	queue_free()
 		
 func behavior_one() -> void:
@@ -32,6 +36,13 @@ func behavior_one() -> void:
 		await asteroid_attack(10)
 		await get_tree().create_timer(3).timeout
 	
+func behavior_two() -> void:
+	platform_attack.emit()
+	await get_tree().create_timer(4).timeout
+	for i in range(4):
+		await asteroid_attack(2)
+		await get_tree().create_timer(4).timeout
+	await attack_completed
 
 func asteroid_attack(num: int) -> void:
 	for i in range(num):
@@ -45,8 +56,3 @@ func asteroid_attack(num: int) -> void:
 		
 func apply_camera_shake() -> void:
 	emit_signal("apply_shake")
-	
-func _on_area_entered(area):
-	if area.is_in_group("bullet"):
-		print("a bullet entered")
-		additional_score.emit(500)
