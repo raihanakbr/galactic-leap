@@ -6,7 +6,7 @@ signal apply_shake()
 signal platform_attack()
 signal attack_completed
 
-var level = 1
+var level = 2
 var player
 
 var asteroid = preload("res://scene/belong_to_boss/asteroid.tscn")
@@ -16,7 +16,12 @@ func _ready() -> void:
 	pass
 	
 func _physics_process(_delta: float) -> void:
-	#print(player)
+	var collision = move_and_collide(Vector2.ZERO)
+	if collision != null:
+		print(collision.get_collider())
+	if collision != null and collision.get_collider().is_in_group("bullet"):
+		print("asd")
+		additional_score.emit(400)
 	pass
 	
 func start(player_node) -> void:

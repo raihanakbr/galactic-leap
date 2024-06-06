@@ -30,7 +30,7 @@ var left_platform
 var right_platform
 
 var score = 0
-var additonal_score = 0
+#var additional_score = 0
 
 var target_score_for_boss = 1
 var score_needed_between_boss = 14000
@@ -46,7 +46,6 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	score_update()
-	print(boss_fighting)
 	if not boss_fighting:
 		if player.position.y < camera.position.y:
 			camera.position.y = player.position.y
@@ -58,7 +57,7 @@ func _process(delta: float) -> void:
 	process_camera_shake(delta)
 
 	if not player_is_above and not boss_fighting:
-		camera.position.y -= 3.5
+		camera.position.y -= 1
 		
 	if score >= target_score_for_boss and not to_boss_fight:
 		to_boss_fight = true
@@ -105,7 +104,7 @@ func _on_platform_eraser_body_entered(body) -> void:
 
 func score_update() -> void:
 	score = camera_init_y_pos - camera.position.y
-	score_label.text = str(int(score + additonal_score))
+	score_label.text = str(int(score + player.additional_score))
 
 func _on_area_2d_body_entered(body) -> void:
 	if body.is_in_group("boss_platform") and to_boss_fight:
@@ -157,7 +156,7 @@ func spawn_boss() -> void:
 	boss_instance.global_position = boss_position
 	boss_instance.apply_shake.connect(apply_shake)
 	boss_instance.platform_attack.connect(boss_platform_attack)
-	boss_instance.additional_score.connect(add_score_from_enemy_hit)
+	#boss_instance.additional_score.connect(add_score_from_enemy_hit)
 	boss_instance.end_phase.connect(end_boss_phase)
 	camera.add_child(boss_instance)
 	await boss_instance.start(player)
@@ -180,8 +179,8 @@ func end_boss_phase() -> void:
 	boss_fighting = false
 	to_boss_fight = false
 
-func add_score_from_enemy_hit(num: int) -> void:
-	additonal_score += num
+#func add_score_from_enemy_hit(num: int) -> void:
+	#additional_score += num
 
 func setup_shake() -> void:
 	rand.randomize()

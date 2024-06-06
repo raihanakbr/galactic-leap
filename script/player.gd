@@ -6,10 +6,11 @@ extends CharacterBody2D
 #Dashing
 @export var dash_ghost: PackedScene
 @export var dash_speed: float = 2000.0
-@export var dash_length = 0.002
+@export var dash_length = 0.01
 var can_dash: bool = true
 var dash_direction: Vector2
 var facing_direction: int = -1
+var additional_score = 0
 
 var gravity = 10
 var jump_force = 600
@@ -18,6 +19,7 @@ var playerVelocity = Vector2.ZERO
 var can_move = true
 
 func _ready() -> void:
+	weapon.add_score.connect(add_score)
 	pass
 
 func movement(delta):
@@ -68,3 +70,6 @@ func disable_movement():
 
 func enable_movement():
 	can_move = true
+	
+func add_score(score):
+	additional_score += score
