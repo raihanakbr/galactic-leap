@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3yp7sv8tjp7y"]
+
+[ext_resource type="Texture2D" uid="uid://dn8t7w2ms54n" path="res://icon.svg" id="1_da6ss"]
+[ext_resource type="Script" path="res://script/belong_to_boss/asteroid_bomb.gd" id="1_nl4lb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtd54"]
+size = Vector2(32, 30)
+
+[node name="asteroid_bomb" type="Area2D"]
+script = ExtResource("1_nl4lb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_da6ss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qtd54")

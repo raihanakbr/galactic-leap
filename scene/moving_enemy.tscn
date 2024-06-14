@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://peo4k1ij3ybb"]
+
+[ext_resource type="Script" path="res://script/moving_enemy.gd" id="1_211um"]
+[ext_resource type="Texture2D" uid="uid://dn8t7w2ms54n" path="res://icon.svg" id="1_cho5x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqx2o"]
+size = Vector2(76, 76)
+
+[node name="MovingEnemy" type="StaticBody2D" groups=["enemy"]]
+script = ExtResource("1_211um")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dqx2o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_cho5x")
+
+[node name="IdleTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddwvksnjdw32m"]
+[gd_scene load_steps=15 format=3 uid="uid://ddwvksnjdw32m"]
 
 [ext_resource type="PackedScene" uid="uid://dlyu1kr0so6t3" path="res://scene/player.tscn" id="1_a87mx"]
 [ext_resource type="Script" path="res://script/galactic_leap.gd" id="1_fb0co"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cgvsd40q47p0x" path="res://scene/broken_platform.tscn" id="4_1acmn"]
 [ext_resource type="PackedScene" uid="uid://dnkad25f5gwpf" path="res://scene/platform_on_boss.tscn" id="5_uvy8n"]
 [ext_resource type="PackedScene" uid="uid://ccbffqj4qs7hy" path="res://scene/side_platform_on_boss.tscn" id="6_ve4fs"]
+[ext_resource type="PackedScene" uid="uid://cqdexd02cev1g" path="res://scene/background/background.tscn" id="7_ad5sl"]
+[ext_resource type="PackedScene" uid="uid://dfk6hb06v0nq1" path="res://scene/belong_to_boss/asteroid.tscn" id="8_k7q52"]
+[ext_resource type="PackedScene" uid="uid://bfye2ombqhw03" path="res://scene/static_enemy.tscn" id="8_s8chn"]
+[ext_resource type="PackedScene" uid="uid://peo4k1ij3ybb" path="res://scene/moving_enemy.tscn" id="9_klbkl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcli3"]
 size = Vector2(24.5, 637)
@@ -19,18 +23,27 @@ size = Vector2(359, 20)
 
 [node name="galactic_leap" type="Node2D"]
 script = ExtResource("1_fb0co")
-scene_platform = Array[PackedScene]([ExtResource("2_fopn4"), ExtResource("3_k6vum"), ExtResource("4_1acmn"), ExtResource("5_uvy8n"), ExtResource("6_ve4fs")])
+scene_platform = Array[PackedScene]([ExtResource("2_fopn4"), ExtResource("3_k6vum"), ExtResource("4_1acmn"), ExtResource("5_uvy8n"), ExtResource("6_ve4fs"), ExtResource("9_klbkl"), ExtResource("8_s8chn")])
+
+[node name="background" parent="." instance=ExtResource("7_ad5sl")]
+position = Vector2(155, 285)
+
+[node name="background2" parent="." instance=ExtResource("7_ad5sl")]
+position = Vector2(155, -285)
+
+[node name="background3" parent="." instance=ExtResource("7_ad5sl")]
+position = Vector2(155, -570)
 
 [node name="Player" parent="." instance=ExtResource("1_a87mx")]
-position = Vector2(180, 320)
+position = Vector2(155, 360)
 
 [node name="platform_container" type="Node2D" parent="."]
 
 [node name="platform" parent="platform_container" instance=ExtResource("2_fopn4")]
-position = Vector2(180, 500)
+position = Vector2(155, 500)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(180, 320)
+position = Vector2(155, 285)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Camera2D"]
 
@@ -49,21 +62,26 @@ disabled = true
 [node name="platform_eraser" type="Area2D" parent="Camera2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/platform_eraser"]
-position = Vector2(0, 370)
+position = Vector2(0, 325)
 shape = SubResource("RectangleShape2D_jq5wj")
 
 [node name="platform_check" type="Area2D" parent="Camera2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/platform_check"]
-position = Vector2(0, 299)
+position = Vector2(0, 252)
 shape = SubResource("RectangleShape2D_q7ovx")
 
+[node name="Area2D" parent="Camera2D" instance=ExtResource("8_k7q52")]
+position = Vector2(402, -55)
+
 [node name="Score" type="Label" parent="Camera2D"]
-offset_left = -180.0
-offset_top = 297.0
-offset_right = 174.0
-offset_bottom = 320.0
+offset_left = -154.0
+offset_top = 262.0
+offset_right = 200.0
+offset_bottom = 285.0
 text = "0"
 
+[connection signal="area_exited" from="Camera2D/platform_eraser" to="." method="_on_platform_eraser_area_exited"]
 [connection signal="body_entered" from="Camera2D/platform_eraser" to="." method="_on_platform_eraser_body_entered"]
+[connection signal="body_exited" from="Camera2D/platform_eraser" to="." method="_on_platform_eraser_body_exited"]
 [connection signal="body_entered" from="Camera2D/platform_check" to="." method="_on_area_2d_body_entered"]

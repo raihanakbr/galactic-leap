@@ -1,20 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://gxog1047yr4b"]
 
-[ext_resource type="Texture2D" uid="uid://dpvshu3gfpern" path="res://assets/power-ups/Sprite-0001-Sheet.png" id="1_cqyid"]
 [ext_resource type="Script" path="res://script/tramp_platform.gd" id="1_mpf5q"]
+[ext_resource type="Texture2D" uid="uid://2wlqggdv3e51" path="res://assets/platform/green platform.png" id="2_uwxol"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egcxg"]
-size = Vector2(37, 19)
+size = Vector2(33, 9)
 
 [node name="tramp_platform" type="StaticBody2D" groups=["platform"]]
 script = ExtResource("1_mpf5q")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_cqyid")
+position = Vector2(-0.5, -0.5)
+scale = Vector2(0.671875, 0.671875)
+texture = ExtResource("2_uwxol")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 14.5)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_egcxg")
 one_way_collision = true

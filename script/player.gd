@@ -17,18 +17,34 @@ var jump_force = 600
 var speed = 300.0
 var playerVelocity = Vector2.ZERO
 var can_move = true
+var boss_fighting = false
+var on_ground
 
 func _ready() -> void:
 	weapon.add_score.connect(add_score)
 	pass
 
-func movement(delta):
-	playerVelocity.y += gravity
+func _collision_check(delta) -> void:
 	var collision = move_and_collide(playerVelocity * delta)
-	if collision and (collision.get_collider().is_in_group("platform") or collision.get_collider().is_in_group("boss_platform")):
+	if collision and collision.get_collider().is_in_group("platform"):
 		playerVelocity.y = -jump_force * collision.get_collider().jump_power
 		if collision.get_collider().has_method("response"):
 			collision.get_collider().response()
+	elif collision and collision.get_collider().is_in_group("boss_platform"):
+		playerVelocity.y = -jump_force * collision.get_collider().jump_power
+		boss_fighting = true
+		on_ground = true
+	elif collision and collision.get_collider().is_in_group("enemy"):
+		player_death()
+
+func _jump():
+	if boss_fighting and on_ground:
+		playerVelocity.y = -jump_force
+		on_ground = false
+
+func movement(delta):
+	playerVelocity.y += gravity
+	_collision_check(delta)
 	
 	var dir = 0
 	if Input.is_action_pressed("ui_right"):
@@ -73,3 +89,7 @@ func enable_movement():
 	
 func add_score(score):
 	additional_score += score
+	
+func player_death() -> void:
+	#Player death and its ui
+	get_tree().reload_current_scene()

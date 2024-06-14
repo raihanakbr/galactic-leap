@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var game = $"."
 @onready var player = $Player
 @onready var camera = $Camera2D
 @onready var score_label = $Camera2D/Score
@@ -7,6 +8,8 @@ extends Node2D
 @onready var platform_container = $platform_container
 @onready var platform_y_pos = $platform_container/platform.position.y
 @export var scene_platform:Array[PackedScene]
+
+#Noise Shake taken from: https://github.com/theshaggydev/the-shaggy-dev-projects
 
 # How quickly to move through the noise
 @export var NOISE_SHAKE_SPEED: float = 30.0
@@ -23,17 +26,30 @@ var noise_i: float = 0.0
 @onready var rand = RandomNumberGenerator.new()
 var shake_strength: float = 0.0
 
+var screen_size
+
+#Background
+var background = preload("res://scene/background/background.tscn")
+var background_y_pos = -570
+
+#Enemies n Boss
 var boss = preload("res://scene/boss.tscn")
+var static_enemy = preload("res://scene/static_enemy.tscn")
+var moving_enemy = preload("res://scene/moving_enemy.tscn")
+var current_level = 0
 var boss_instance
 var boss_platform
 var left_platform
 var right_platform
 
+#Enemies control but dumb af
+var choices = [5, 6, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+
 var score = 0
-#var additional_score = 0
 
 var target_score_for_boss = 1
-var score_needed_between_boss = 14000
+var score_needed_between_boss = 1
+var addition_score_needed = 2000
 var boss_position
 
 var last_platform_is_trap = false
@@ -42,6 +58,7 @@ var to_boss_fight = false
 var boss_fighting = false
 
 func _ready() -> void:
+	screen_size = get_viewport_rect().size
 	level_generator(20)
 
 func _physics_process(_delta: float) -> void:
@@ -57,7 +74,7 @@ func _process(delta: float) -> void:
 	process_camera_shake(delta)
 
 	if not player_is_above and not boss_fighting:
-		camera.position.y -= 1
+		camera.position.y -= 0.7
 		
 	if score >= target_score_for_boss and not to_boss_fight:
 		to_boss_fight = true
@@ -66,7 +83,7 @@ func _process(delta: float) -> void:
 func generate_platform_on_boss() -> void:
 	platform_y_pos -= randf_range(60, 80)
 	boss_platform = scene_platform[3].instantiate() as StaticBody2D
-	boss_platform.position = Vector2(180, platform_y_pos)
+	boss_platform.position = Vector2(155, platform_y_pos)
 	platform_container.call_deferred("add_child", boss_platform)
 
 func level_generator(amount: int) -> void:
@@ -76,16 +93,17 @@ func level_generator(amount: int) -> void:
 		var new_platform
 		
 		if not last_platform_is_trap and random_num < 2:
-			new_platform = scene_platform[2].instantiate() as StaticBody2D
+			var random_choice = choices[randi_range(0, len(choices) - 1)]
+			new_platform = scene_platform[random_choice].instantiate() as StaticBody2D
 			last_platform_is_trap = true
 			new_platform.connect("delete_broken_platform", delete_broken_platform)
 		else:
-			if random_num == 3 and abs(score - target_score_for_boss) > 3000:
+			if random_num == 3 and abs(score - target_score_for_boss) > 3000 and current_level <= 10:
 				new_platform = scene_platform[1].instantiate() as StaticBody2D
 			else:
 				new_platform = scene_platform[0].instantiate() as StaticBody2D
 			last_platform_is_trap = false
-		new_platform.position = Vector2(randf_range(20, 340), platform_y_pos)
+		new_platform.position = Vector2(randf_range(10, 300), platform_y_pos)
 		platform_container.call_deferred("add_child", new_platform)
 
 func delete_broken_platform(platform) -> void:
@@ -99,7 +117,6 @@ func _on_platform_eraser_body_entered(body) -> void:
 		if not to_boss_fight:
 			level_generator(1)
 	elif body.is_in_group("player"):
-		print('death prompt and its ui')
 		get_tree().reload_current_scene()
 
 func score_update() -> void:
@@ -121,13 +138,13 @@ func toggle_boss_platfom(b: bool) -> void:
 func toggle_side_platform():
 	if left_platform != null:
 		right_platform = scene_platform[4].instantiate() as StaticBody2D
-		right_platform.position = Vector2(randf_range(195, 345), platform_y_pos - randf_range(10, 50))
+		right_platform.position = Vector2(randf_range(165, 300), platform_y_pos - randf_range(10, 50))
 		platform_container.call_deferred("add_child", right_platform)
 		await get_tree().create_timer(0.9).timeout
 		left_platform.queue_free()
 	else:
 		left_platform = scene_platform[4].instantiate() as StaticBody2D
-		left_platform.position = Vector2(randf_range(15, 165), platform_y_pos - randf_range(10, 50))
+		left_platform.position = Vector2(randf_range(10, 145), platform_y_pos - randf_range(10, 50))
 		platform_container.call_deferred("add_child", left_platform)
 		await get_tree().create_timer(0.9).timeout
 		right_platform.queue_free()
@@ -135,7 +152,7 @@ func toggle_side_platform():
 		
 func boss_platform_attack() -> void:
 	left_platform = scene_platform[4].instantiate() as StaticBody2D
-	left_platform.position = Vector2(randf_range(15, 165), platform_y_pos - randf_range(10, 50))
+	left_platform.position = Vector2(randf_range(10, 145), platform_y_pos - randf_range(10, 50))
 	platform_container.call_deferred("add_child", left_platform)
 	
 	await get_tree().create_timer(2).timeout
@@ -152,18 +169,48 @@ func boss_platform_attack() -> void:
 		
 func spawn_boss() -> void:
 	boss_instance = boss.instantiate()
-	boss_position = Vector2(180, platform_y_pos - 588)
+	boss_position = Vector2(155, platform_y_pos - 523)
+	boss_instance.platform_y_pos = platform_y_pos
 	boss_instance.global_position = boss_position
 	boss_instance.apply_shake.connect(apply_shake)
 	boss_instance.platform_attack.connect(boss_platform_attack)
-	#boss_instance.additional_score.connect(add_score_from_enemy_hit)
 	boss_instance.end_phase.connect(end_boss_phase)
 	camera.add_child(boss_instance)
-	await boss_instance.start(player)
+	await boss_instance.start(player, current_level)
 	end_boss_phase()
 
+func _get_random_x_pos_outside() -> float:
+	var random_x_pos
+	if player.position.x < screen_size.x/2:
+		random_x_pos  = randf_range(-20, -10)
+	else:
+		random_x_pos = randf_range(320, 330)
+	return random_x_pos
+
+func _get_random_x_pos() -> float:
+	var random_x_pos  = randf_range(10, 300)
+	return random_x_pos
+	
+func spawn_static_enemy() -> void:
+	var enemy_instance = static_enemy.instantiate()
+	var random_x_pos = _get_random_x_pos()
+	var enemy_position = Vector2(random_x_pos, platform_y_pos - 440)
+	enemy_instance.global_position = enemy_position
+	camera.add_child(enemy_instance)
+
+func spawn_moving_enemy() -> void:
+	var enemy_instance = moving_enemy.instantiate()
+	var random_x_pos = _get_random_x_pos_outside()
+	var enemy_position = Vector2(random_x_pos, platform_y_pos - 360)
+	enemy_instance.global_position = enemy_position
+	camera.add_child(enemy_instance)
+
 func end_boss_phase() -> void:
+	current_level += 1
+	if current_level <= 10:
+		choices.pop_back()
 	target_score_for_boss += score_needed_between_boss
+	score_needed_between_boss += addition_score_needed
 	print("ending boss phase...")
 	player.disable_movement()
 	
@@ -211,3 +258,18 @@ func get_noise_offset(delta: float, speed: float, strength: float) -> Vector2:
 		noise.get_noise_2d(1, noise_i) * strength,
 		noise.get_noise_2d(100, noise_i) * strength
 	)
+
+func _on_platform_eraser_area_exited(area):
+	if area.is_in_group("background"):
+		area.queue_free()
+		var background_instance = background.instantiate()
+		background_y_pos -= screen_size.y
+		print(background_y_pos)
+		background_instance.global_position = Vector2(screen_size.x/2, background_y_pos)
+		game.add_child(background_instance)
+		game.move_child(background_instance, 0)
+
+
+func _on_platform_eraser_body_exited(body):
+	if body.is_in_group("enemy"):
+		body.queue_free()
