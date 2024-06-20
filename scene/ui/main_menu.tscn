@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwo8d7urji0g5"]
+
+[ext_resource type="Script" path="res://script/ui/main_menu.gd" id="1_8hngi"]
+[ext_resource type="Texture2D" uid="uid://bh6qofkks4vvn" path="res://assets/background/main screen.png" id="1_52xse"]
+[ext_resource type="Texture2D" uid="uid://dvsve1jel1ger" path="res://assets/buttons/play button.png" id="2_dl32f"]
+[ext_resource type="AudioStream" uid="uid://dcksey42224vl" path="res://assets/bgm/412344__michorvath__rivalry-8-bit-music-loop.wav" id="4_ijo73"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8hngi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_52xse")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 248.0
+offset_right = 202.0
+offset_bottom = 336.0
+icon = ExtResource("2_dl32f")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ijo73")
+autoplay = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

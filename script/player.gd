@@ -1,7 +1,14 @@
 extends CharacterBody2D
 
+signal death_signal
+
 @onready var weapon = $weapon
 @onready var dash = $dash
+@onready var sprite = $Sprite2D
+@onready var jump_sound = $AudioStreamPlayer2D
+@onready var broke_platform_sound = $AudioStreamPlayer2D2
+@onready var death = $AudioStreamPlayer2D3
+@onready var collision = $CollisionShape2D
 
 #Dashing
 @export var dash_ghost: PackedScene
@@ -21,6 +28,7 @@ var boss_fighting = false
 var on_ground
 
 func _ready() -> void:
+	enable_movement()
 	weapon.add_score.connect(add_score)
 	pass
 
@@ -30,7 +38,11 @@ func _collision_check(delta) -> void:
 		playerVelocity.y = -jump_force * collision.get_collider().jump_power
 		if collision.get_collider().has_method("response"):
 			collision.get_collider().response()
+			broke_platform_sound.play()
+		else:
+			jump_sound.play()
 	elif collision and collision.get_collider().is_in_group("boss_platform"):
+		jump_sound.play()
 		playerVelocity.y = -jump_force * collision.get_collider().jump_power
 		boss_fighting = true
 		on_ground = true
@@ -47,14 +59,30 @@ func movement(delta):
 	_collision_check(delta)
 	
 	var dir = 0
+	var mouse_pos = get_global_mouse_position()
+	
+	if mouse_pos.x > global_position.x: # right
+		if mouse_pos.y < global_position.y:
+			sprite.frame = 5
+		else:
+			sprite.frame = 3
+	elif mouse_pos.x < global_position.x: #left
+		if mouse_pos.y < global_position.y:
+			sprite.frame = 2
+		else:
+			sprite.frame = 0
+	
 	if Input.is_action_pressed("ui_right"):
 		facing_direction = 1
 		dir += 1
-		$AnimatedSprite2D.flip_h = true
+		#sprite.frame = 3
+		#$AnimatedSprite2D.flip_h = true
 	elif Input.is_action_pressed("ui_left"):
 		facing_direction = -1
 		dir -= 1
-		$AnimatedSprite2D.flip_h = false
+		#sprite.frame = 0
+		#$AnimatedSprite2D.flip_h = false
+		
 		
 	if dash.is_dashing():
 		playerVelocity.x = lerp(playerVelocity.x, facing_direction * dash_speed, 0.8)
@@ -83,13 +111,20 @@ func handle_dash(_delta: float) -> void:
 	
 func disable_movement():
 	can_move = false
+	weapon.can_move = false
 
 func enable_movement():
 	can_move = true
+	weapon.can_move = true
 	
 func add_score(score):
 	additional_score += score
 	
 func player_death() -> void:
-	#Player death and its ui
-	get_tree().reload_current_scene()
+	death.play()
+	disable_movement()
+	collision.disabled = true
+	weapon.visible = false
+	sprite.visible = false
+	death_signal.emit()
+	#get_tree().reload_current_scene()

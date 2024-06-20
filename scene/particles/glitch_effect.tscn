@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bh5dsm7rkr0xn"]
+
+[ext_resource type="Texture2D" uid="uid://bciq1t5jkkkhg" path="res://assets/boss/glitch summon attack.png" id="1_hfukj"]
+[ext_resource type="AudioStream" uid="uid://d0cgeu745byse" path="res://assets/sfx/glitch.mp3" id="2_sg6xa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h808"]
+atlas = ExtResource("1_hfukj")
+region = Rect2(0, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0mow"]
+atlas = ExtResource("1_hfukj")
+region = Rect2(90, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brvbv"]
+atlas = ExtResource("1_hfukj")
+region = Rect2(180, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyavd"]
+atlas = ExtResource("1_hfukj")
+region = Rect2(270, 0, 90, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhs2c"]
+atlas = ExtResource("1_hfukj")
+region = Rect2(360, 0, 90, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8rd7y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h808")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0mow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brvbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyavd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhs2c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8rd7y")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_sg6xa")
+autoplay = true

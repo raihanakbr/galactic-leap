@@ -1,12 +1,13 @@
 extends StaticBody2D
 
 @export var jump_power = 0.6
+@onready var anim = $AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _ready() -> void:
+	anim.play("show")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+func destroy() -> void:
+	anim.play("destroy")
+	
+func delete() -> void:
+	queue_free()

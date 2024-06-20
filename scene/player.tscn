@@ -1,45 +1,56 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlyu1kr0so6t3"]
+[gd_scene load_steps=11 format=3 uid="uid://dlyu1kr0so6t3"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_6epck"]
-[ext_resource type="Texture2D" uid="uid://dnamdeqrh40jy" path="res://assets/character/Sprite-0002.png" id="1_vjbid"]
-[ext_resource type="Texture2D" uid="uid://dn8t7w2ms54n" path="res://icon.svg" id="3_265jl"]
+[ext_resource type="Texture2D" uid="uid://y54uk0uel3i7" path="res://assets/character/Vim Shoot (No Gun).png" id="3_8igj4"]
 [ext_resource type="Script" path="res://script/weapon.gd" id="3_yweqr"]
+[ext_resource type="Texture2D" uid="uid://2olif1p0r8fd" path="res://assets/character/Gun Only Rotated.png" id="4_mgyrx"]
 [ext_resource type="PackedScene" uid="uid://daj3aqx71v4i1" path="res://scene/dash.tscn" id="5_kl1wj"]
+[ext_resource type="AudioStream" uid="uid://dsf8keblxxxot" path="res://assets/sfx/laserShoot.wav" id="6_k32jj"]
+[ext_resource type="AudioStream" uid="uid://3r32r13l8dum" path="res://assets/sfx/jump.wav" id="8_bbx74"]
+[ext_resource type="AudioStream" uid="uid://r6ha0tos5v3a" path="res://assets/sfx/platform_broke.wav" id="9_faobx"]
+[ext_resource type="AudioStream" uid="uid://bxuch04w71j3t" path="res://assets/sfx/player_death.wav" id="10_wovv2"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_5rqji"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_vjbid")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lymmm"]
-size = Vector2(26, 38)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j7bu2"]
+radius = 14.5
+height = 40.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_6epck")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_5rqji")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("3_8igj4")
+hframes = 3
+vframes = 2
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 5)
-shape = SubResource("RectangleShape2D_lymmm")
+position = Vector2(1.5, 1)
+shape = SubResource("CapsuleShape2D_j7bu2")
 
 [node name="weapon" type="Sprite2D" parent="."]
-position = Vector2(-8.5, 3.5)
-scale = Vector2(0.273438, 0.101563)
-texture = ExtResource("3_265jl")
+position = Vector2(-15, -19)
+texture = ExtResource("4_mgyrx")
+flip_h = true
+flip_v = true
 script = ExtResource("3_yweqr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="weapon"]
+position = Vector2(15, 19)
+stream = ExtResource("6_k32jj")
 
 [node name="Marker2D" type="Marker2D" parent="weapon"]
 
 [node name="dash" parent="." instance=ExtResource("5_kl1wj")]
 position = Vector2(-8.5, 3.5)
 scale = Vector2(0.273438, 0.101563)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_bbx74")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_faobx")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_wovv2")

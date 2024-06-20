@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqos6atxkjsh6"]
+
+[ext_resource type="Script" path="res://script/enemy_attack.gd" id="1_qs2qy"]
+[ext_resource type="Texture2D" uid="uid://do82jc45cirus" path="res://assets/enemies/enemy attack bullet.png" id="2_v305g"]
+[ext_resource type="AudioStream" uid="uid://bsriathhxnfqs" path="res://assets/sfx/enemy_laser.wav" id="3_i5npu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6elpk"]
+radius = 5.0
+height = 10.0
+
+[sub_resource type="Animation" id="Animation_5v7jt"]
+resource_name = "ready"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_movement"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_deqgf"]
+_data = {
+"ready": SubResource("Animation_5v7jt")
+}
+
+[node name="bullet" type="Area2D" groups=["bullet"]]
+script = ExtResource("1_qs2qy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v305g")
+hframes = 3
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("CapsuleShape2D_6elpk")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-5.96046e-08, -5.96046e-08)
+scale = Vector2(0.1, 0.1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_deqgf")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_i5npu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -8,6 +8,7 @@ var target_x_point
 var is_idle = false
 
 @onready var idle_timer: Timer = $IdleTimer
+@onready var sprite = $Sprite2D
 
 func _ready():
 	set_as_top_level(true)
@@ -18,13 +19,14 @@ func _physics_process(delta):
 	movement(delta)
 
 func update_target_point():
-	print(target_x_point)
 	if position.x < screen.x / 2:
 		dir = Vector2(1, 0)
 		target_x_point = randf_range(200, 300)
+		sprite.frame = 1
 	else:
 		dir = Vector2(-1, 0)
 		target_x_point = randf_range(10, 110)
+		sprite.frame = 0
 
 func flip():
 	dir *= -1

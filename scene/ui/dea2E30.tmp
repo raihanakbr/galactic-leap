@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://efjsli05ymet"]
+
+[ext_resource type="Texture2D" uid="uid://88q22y4bv7wo" path="res://assets/buttons/UI base (red).png" id="1_2dy0o"]
+[ext_resource type="Script" path="res://script/ui/death_ui.gd" id="1_hvtwg"]
+[ext_resource type="Texture2D" uid="uid://2ifdmb2tm01t" path="res://assets/buttons/button template diy (red).png" id="2_g3j7c"]
+[ext_resource type="FontFile" uid="uid://cpme3nv0usjkb" path="res://assets/font/Not_Jam_UI_15.ttf" id="3_5rxtu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_123jo"]
+font = ExtResource("3_5rxtu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_24wl3"]
+font = ExtResource("3_5rxtu")
+font_size = 40
+
+[node name="death_ui" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hvtwg")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 167.0
+offset_right = 271.0
+offset_bottom = 298.0
+size_flags_horizontal = 4
+texture = ExtResource("1_2dy0o")
+patch_margin_left = 60
+patch_margin_top = 60
+patch_margin_right = 60
+patch_margin_bottom = 60
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 76.0
+offset_right = 106.0
+offset_bottom = 111.0
+texture = ExtResource("2_g3j7c")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -9.5
+offset_right = 26.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "RETRY"
+label_settings = SubResource("LabelSettings_123jo")
+horizontal_alignment = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 76.0
+offset_right = 213.0
+offset_bottom = 111.0
+texture = ExtResource("2_g3j7c")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -9.5
+offset_right = 26.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "MENU"
+label_settings = SubResource("LabelSettings_123jo")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 24.0
+offset_right = 215.0
+offset_bottom = 65.0
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_24wl3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="gui_input" from="NinePatchRect/NinePatchRect" to="." method="_on_nine_patch_rect_gui_input"]
