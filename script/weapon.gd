@@ -20,30 +20,26 @@ func _process(_delta):
 		
 	var mouse_pos = get_global_mouse_position()
 	look_at(mouse_pos)
-	var degree_rotation = (int(abs(rad_to_deg(rotation))) % 360) * -1
-	
+
 	if character_sprite.frame == 0:
+		frame = 0
 		position.x = get_parent().position.x - 22
 		position.y = get_parent().position.y + 7
 		flip_v = true
 	elif character_sprite.frame == 3:
+		frame = 0
 		position.x = get_parent().position.x + 22
 		position.y = get_parent().position.y + 7
 		flip_v = false
 	elif character_sprite.frame == 2:
-		while degree_rotation < -180:
-			degree_rotation += 180
-		var gun_offset = (degree_rotation + 90) * 8 / 90
-		
-		position.x = get_parent().position.x - 9 + gun_offset
-		position.y = get_parent().position.y - 19
+		frame = 1
+		position.x = get_parent().position.x - 11
+		position.y = get_parent().position.y - 15
 		flip_v = true
 	elif character_sprite.frame == 5:
-		while degree_rotation < -100:
-			degree_rotation += 180
-		var gun_offset = (degree_rotation) * 8 / 90
-		position.x = get_parent().position.x + 18 + gun_offset
-		position.y = get_parent().position.y - 19
+		frame = 1
+		position.x = get_parent().position.x + 11
+		position.y = get_parent().position.y - 15
 		flip_v = false
 
 func _physics_process(_delta):

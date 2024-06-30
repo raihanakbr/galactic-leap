@@ -1,0 +1,151 @@
+[gd_scene load_steps=14 format=3 uid="uid://4pobj3ifbvfm"]
+
+[ext_resource type="Texture2D" uid="uid://dq2ukygndohtr" path="res://assets/background/bg.png" id="1_fi574"]
+[ext_resource type="Script" path="res://script/ui/token.gd" id="1_u4rvn"]
+[ext_resource type="Texture2D" uid="uid://c34q5fbk1md70" path="res://assets/buttons/UI base template (blue).png" id="2_p7sap"]
+[ext_resource type="FontFile" uid="uid://cpme3nv0usjkb" path="res://assets/font/Not_Jam_UI_15.ttf" id="3_c6sv7"]
+[ext_resource type="Texture2D" uid="uid://bme8oyh2d46vt" path="res://assets/buttons/button template filled diy (blue).png" id="4_yenng"]
+[ext_resource type="Texture2D" uid="uid://dscsyae8kq7a0" path="res://assets/buttons/button template diy (blue).png" id="5_fy7lt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pi55w"]
+font = ExtResource("3_c6sv7")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_jsnry"]
+font = ExtResource("3_c6sv7")
+
+[sub_resource type="Theme" id="Theme_kbe45"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1gt7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gbd3q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0r2uy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rh0h0"]
+font = ExtResource("3_c6sv7")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u4rvn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fi574")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -76.0
+offset_right = 111.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_p7sap")
+patch_margin_left = 60
+patch_margin_top = 60
+patch_margin_right = 60
+patch_margin_bottom = 60
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 19.0
+offset_right = 185.0
+offset_bottom = 82.0
+text = "INSERT
+CODE"
+label_settings = SubResource("LabelSettings_pi55w")
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 131.0
+offset_right = 167.0
+offset_bottom = 160.0
+texture = ExtResource("4_yenng")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 117.0
+offset_bottom = 25.0
+text = "SUBMIT"
+label_settings = SubResource("LabelSettings_jsnry")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="NinePatchRect/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 85.0
+offset_right = 202.0
+offset_bottom = 125.0
+texture = ExtResource("5_fy7lt")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="LineEdit" type="LineEdit" parent="NinePatchRect/NinePatchRect2"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 187.0
+offset_bottom = 35.0
+theme = SubResource("Theme_kbe45")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_h1gt7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gbd3q")
+theme_override_styles/read_only = SubResource("StyleBoxTexture_0r2uy")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 104.0
+offset_right = 106.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_rh0h0")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="button_down" from="NinePatchRect/NinePatchRect/Button" to="." method="_on_button_button_down"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

@@ -39,7 +39,7 @@ var background_y_pos = -570
 var boss = preload("res://scene/boss.tscn")
 var static_enemy = preload("res://scene/static_enemy.tscn")
 var moving_enemy = preload("res://scene/moving_enemy.tscn")
-var current_level = 0
+var current_level = 2
 var boss_instance
 var boss_platform
 var left_platform
@@ -51,8 +51,8 @@ var choices = [5, 5, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 var score = 0
 var game_over = false
 
-var target_score_for_boss = 1
-var score_needed_between_boss = 10000
+var target_score_for_boss = 10000
+var score_needed_between_boss = 14000
 var addition_score_needed = 2000
 var boss_position
 

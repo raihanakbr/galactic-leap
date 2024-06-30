@@ -15,11 +15,25 @@ run/main_scene="res://scene/ui/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SHA512_Request="*res://globals/COMPFEST_handler/sha512_request.gd"
+GlobalGameCodeVerifier="*res://globals/COMPFEST_handler/game_code_verifier_new.gd"
+
 [display]
 
 window/size/viewport_width=310
 window/size/viewport_height=570
 window/size/resizable=false
+window/stretch/mode="viewport"
+
+[dotnet]
+
+project/assembly_name="Galactic Leap"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 
@@ -53,4 +67,5 @@ dash={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.0196078, 0.101961, 0.266667, 1)

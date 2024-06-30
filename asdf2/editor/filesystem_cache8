@@ -1,0 +1,138 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1719653944
+export_presets.cfg::TextFile::-1::1718901925::0::1::::<><>::
+icon.svg::CompressedTexture2D::239442748538797967::1714815627::1719500029::1::::<><>::
+::res://assets/::1718893151
+::res://assets/background/::1719500029
+bg.png::CompressedTexture2D::8339255216866271987::1717927989::1719500029::1::::<><>::
+main screen.png::CompressedTexture2D::2942735051078480755::1718891089::1719500029::1::::<><>::
+::res://assets/bgm/::1719500030
+403920__vabsounds__arcade-war.wav::AudioStreamWAV::4302534697855090662::1718888408::1719500030::1::::<><>::
+412344__michorvath__rivalry-8-bit-music-loop.wav::AudioStreamWAV::7321384871565046129::1718898518::1719500030::1::::<><>::
+playing_bgm.wav::AudioStreamWAV::5329806182729527040::1718898195::1719500030::1::::<><>::
+::res://assets/boss/::1719500029
+boss attack platform (both eye).png::CompressedTexture2D::5136630625306431950::1718817617::1719500029::1::::<><>::
+boss attack platform (left eye).png::CompressedTexture2D::1491303596441667514::1718817617::1719500029::1::::<><>::
+boss attack platform (no eye).png::CompressedTexture2D::5971628358212371653::1718816567::1719500029::1::::<><>::
+boss attack platform (right eye).png::CompressedTexture2D::170452848118403643::1718817617::1719500029::1::::<><>::
+Boss attack.png::CompressedTexture2D::5861525458215096004::1718627338::1719500029::1::::<><>::
+Boss Sprite Eye Follow (Back Rev).png::CompressedTexture2D::1584822470502466867::1718617793::1719500029::1::::<><>::
+Boss Sprite Eye Follow (Front Rev).png::CompressedTexture2D::3716247330431910950::1718616999::1719500029::1::::<><>::
+Boss Sprite Eye Follow (Middle Rev).png::CompressedTexture2D::5841171579730155182::1718617865::1719500029::1::::<><>::
+glitch summon attack.png::CompressedTexture2D::2544332340237906988::1718799981::1719500029::1::::<><>::
+meteor sheet.png::CompressedTexture2D::2347211086895803389::1718713414::1719500029::1::::<><>::
+meteor warning sheet.png::CompressedTexture2D::6558518924810744362::1718629363::1719500029::1::::<><>::
+::res://assets/buttons/::1719500029
+button template diy (blue).png::CompressedTexture2D::8427925764688135385::1719470020::1719500029::1::::<><>::
+button template diy (red).png::CompressedTexture2D::1911923375682554011::1718893521::1719500029::1::::<><>::
+button template filled diy (blue).png::CompressedTexture2D::3238974252847666833::1719419012::1719500029::1::::<><>::
+play button.png::CompressedTexture2D::8671670146782588401::1718891238::1719500029::1::::<><>::
+UI base (red).png::CompressedTexture2D::2385377450784323538::1718892109::1719500029::1::::<><>::
+UI base template (blue).png::CompressedTexture2D::6799021254471383013::1719416919::1719500029::1::::<><>::
+::res://assets/character/::1719500029
+bullet.png::CompressedTexture2D::3792343506314744561::1718951703::1719500029::1::::<><>::
+Gun Only Rotated.png::CompressedTexture2D::1924682543552693289::1718784990::1719500029::1::::<><>::
+Gun Only.png::CompressedTexture2D::3950829329324182285::1718784396::1719500029::1::::<><>::
+Gun Sprite V2.png::CompressedTexture2D::8470342704428459459::1719400774::1719500029::1::::<><>::
+Gun Sprite V3.png::CompressedTexture2D::2821203564614776191::1719401597::1719500029::1::::<><>::
+Sprite-0001-Sheet.png::CompressedTexture2D::3393734120738406873::1714816733::1719500029::1::::<><>::
+Sprite-0002.png::CompressedTexture2D::8072451215261833254::1714817692::1719500029::1::::<><>::
+Vim Shoot (No Gun).png::CompressedTexture2D::1748260653371026552::1718776130::1719500029::1::::<><>::
+::res://assets/enemies/::1719500029
+enemy attack bullet.png::CompressedTexture2D::8211685910057666270::1718861429::1719500029::1::::<><>::
+enemy attack right.png::CompressedTexture2D::3363696429957688995::1718860509::1719500029::1::::<><>::
+enemy attack.png::CompressedTexture2D::1020562425107819932::1718865924::1719500029::1::::<><>::
+wandering enemy left.png::CompressedTexture2D::6060273403913545555::1718859652::1719500029::1::::<><>::
+wandering enemy right.png::CompressedTexture2D::3730617000899581559::1718859649::1719500029::1::::<><>::
+wandering enemy.png::CompressedTexture2D::5821294949127957625::1718866393::1719500029::1::::<><>::
+::res://assets/font/::1719500029
+Not_Jam_UI_15.ttf::FontFile::5850740141613583273::1718893010::1719500029::1::::<><>::
+::res://assets/platform/::1719500029
+blue platform.png::CompressedTexture2D::3584203020912688071::1717934903::1719500029::1::::<><>::
+green platform.png::CompressedTexture2D::1941211873013501750::1717936020::1719500029::1::::<><>::
+pink platform.png::CompressedTexture2D::4767423464037547426::1717933252::1719500029::1::::<><>::
+Sprite-0001.png::CompressedTexture2D::8019710706486758234::1714816741::1719500029::1::::<><>::
+Sprite-0002.png::CompressedTexture2D::1074311989283552570::1715525455::1719500029::1::::<><>::
+Sprite-0003.png::CompressedTexture2D::535101872181565582::1716608353::1719500029::1::::<><>::
+tiny boss platform (duplicates).png::CompressedTexture2D::889010392432060678::1718873749::1719500029::1::::<><>::
+tiny boss platform full sheet.png::CompressedTexture2D::6188973228532753545::1718874994::1719500029::1::::<><>::
+::res://assets/power-ups/::1719500029
+Sprite-0001-Sheet.png::CompressedTexture2D::8256553138913590375::1715525826::1719500029::1::::<><>::
+::res://assets/sfx/::1719500030
+enemy_laser.wav::AudioStreamWAV::3685401036045416510::1718889694::1719500030::1::::<><>::
+explosion.wav::AudioStreamWAV::4194365502266267210::1718868317::1719500030::1::::<><>::
+glitch.mp3::AudioStreamMP3::8918484443928979920::1718890644::1719500029::1::::<><>::
+hitHurt.wav::AudioStreamWAV::8995112084087823878::1718871163::1719500030::1::::<><>::
+hitHurt_balls.wav::AudioStreamWAV::7051763257338105744::1718871626::1719500030::1::::<><>::
+jump.wav::AudioStreamWAV::2002131270266876152::1718872365::1719500030::1::::<><>::
+laserShoot.wav::AudioStreamWAV::8435004856204188691::1718870770::1719500030::1::::<><>::
+platform_broke.wav::AudioStreamWAV::1257632414268160668::1718888831::1719500030::1::::<><>::
+player_death.wav::AudioStreamWAV::4042186935918365631::1718889144::1719500030::1::::<><>::
+::res://game/::1719500029
+index.apple-touch-icon.png::CompressedTexture2D::2684985979360677888::1718901924::1719500029::1::::<><>::
+index.icon.png::CompressedTexture2D::3357670933248845676::1718901924::1719500029::1::::<><>::
+index.png::CompressedTexture2D::8207542158012363887::1718901924::1719500029::1::::<><>::
+::res://globals/::1719653808
+TestAutoload.cs::CSharpScript::-1::1719653818::0::1::::<><>::
+::res://globals/COMPFEST_handler/::1719652909
+GameCodeVerifier.cs::CSharpScript::-1::1719651554::0::1::::<><>::
+GamePointSender.cs::CSharpScript::-1::1719651554::0::1::::<><>::
+::res://scene/::1719470476
+boss.tscn::PackedScene::6788078670986683432::1719396634::0::1::::<><>::res://script/boss.gd<>uid://wtx2aq0mtqhn::::res://assets/boss/Boss Sprite Eye Follow (Back Rev).png<>uid://bs7gbyqceie7w::::res://assets/boss/Boss Sprite Eye Follow (Front Rev).png<>uid://cphriilx6rr7s::::res://assets/boss/Boss Sprite Eye Follow (Middle Rev).png<>res://script/belong_to_boss/eye_follow.gd<>uid://c0o8333wn0c7k::::res://assets/boss/meteor warning sheet.png
+broken_platform.tscn::PackedScene::5238426187865423797::1719396634::0::1::::<><>::res://script/broken_platform.gd<>uid://b86m1dypx46sk::::res://assets/platform/pink platform.png
+bullet.tscn::PackedScene::8475299028498507479::1719396634::0::1::::<><>::res://script/bullet.gd<>uid://bubblxcfuqscf::::res://assets/character/bullet.png
+dash.tscn::PackedScene::7179542404056943526::1719396634::0::1::::<><>::res://script/dash.gd
+dash_sprite.tscn::PackedScene::5381600953921121266::1717479774::0::1::::<><>::res://script/dash_sprite.gd
+enemy_attack.tscn::PackedScene::8312333133735543133::1719396636::0::1::::<><>::res://script/enemy_attack.gd<>uid://do82jc45cirus::::res://assets/enemies/enemy attack bullet.png<>uid://bsriathhxnfqs::::res://assets/sfx/enemy_laser.wav
+galactic_leap.tscn::PackedScene::7416538773286445906::1718899250::0::1::::<><>::uid://dlyu1kr0so6t3::::res://scene/player.tscn<>res://script/galactic_leap.gd<>uid://crs6jvc31yo8d::::res://scene/platform.tscn<>uid://gxog1047yr4b::::res://scene/tramp_platform.tscn<>uid://cgvsd40q47p0x::::res://scene/broken_platform.tscn<>uid://dnkad25f5gwpf::::res://scene/platform_on_boss.tscn<>uid://ccbffqj4qs7hy::::res://scene/side_platform_on_boss.tscn<>uid://cqdexd02cev1g::::res://scene/background/background.tscn<>uid://bfye2ombqhw03::::res://scene/static_enemy.tscn<>uid://peo4k1ij3ybb::::res://scene/moving_enemy.tscn<>uid://b2kgeait5m0c5::::res://assets/bgm/403920__vabsounds__arcade-war.wav<>uid://ch62enjr6h55e::::res://assets/bgm/playing_bgm.wav<>uid://cpme3nv0usjkb::::res://assets/font/Not_Jam_UI_15.ttf<>uid://efjsli05ymet::::res://scene/ui/death_ui.tscn
+moving_enemy.tscn::PackedScene::1061992557283752307::1719396635::0::1::::<><>::res://script/moving_enemy.gd<>uid://co6443f2lr0jl::::res://assets/enemies/wandering enemy.png
+platform.tscn::PackedScene::6005109915114592125::1719396634::0::1::::<><>::res://script/platform.gd<>uid://brchkg573xmp8::::res://assets/platform/blue platform.png
+platform_on_boss.tscn::PackedScene::8092367618038151947::1719396634::0::1::::<><>::res://script/platform_on_boss.gd<>uid://cfghs5wgfoiug::::res://assets/boss/boss attack platform (both eye).png
+player.tscn::PackedScene::7982145720347653518::1719470476::0::1::::<><>::res://script/player.gd<>uid://y54uk0uel3i7::::res://assets/character/Vim Shoot (No Gun).png<>uid://bggu2s76l3p7t::::res://assets/character/Gun Sprite V3.png<>res://script/weapon.gd<>uid://daj3aqx71v4i1::::res://scene/dash.tscn<>uid://dsf8keblxxxot::::res://assets/sfx/laserShoot.wav<>uid://3r32r13l8dum::::res://assets/sfx/jump.wav<>uid://r6ha0tos5v3a::::res://assets/sfx/platform_broke.wav<>uid://bxuch04w71j3t::::res://assets/sfx/player_death.wav
+side_platform_on_boss.tscn::PackedScene::4915596801966278902::1719396636::0::1::::<><>::res://script/side_platform_on_boss.gd<>uid://cuf8qqqxmh4yn::::res://assets/platform/tiny boss platform full sheet.png
+static_enemy.tscn::PackedScene::2787201806318868894::1719396635::0::1::::<><>::res://script/static_enemy.gd<>uid://osmrqhweobom::::res://assets/enemies/enemy attack.png
+tramp_platform.tscn::PackedScene::469475908422297151::1719396634::0::1::::<><>::res://script/tramp_platform.gd<>uid://2wlqggdv3e51::::res://assets/platform/green platform.png
+::res://scene/background/::1719396635
+background.tscn::PackedScene::5902340137507550382::1719396635::0::1::::<><>::uid://dq2ukygndohtr::::res://assets/background/bg.png
+::res://scene/belong_to_boss/::1719396635
+asteroid.tscn::PackedScene::7532744866724177446::1719396634::0::1::::<><>::res://script/belong_to_boss/asteroid.gd<>uid://8pahutdnnxy0::::res://assets/boss/meteor sheet.png<>uid://c7p6rmhs5bxy3::::res://assets/sfx/hitHurt_balls.wav
+asteroid_bomb.tscn::PackedScene::4402222251338222956::1718621784::0::1::::<><>::uid://dn8t7w2ms54n::::res://icon.svg<>res://script/belong_to_boss/asteroid_bomb.gd
+normal_attack.tscn::PackedScene::4346797463726915967::1719396635::0::1::::<><>::res://script/belong_to_boss/normal_attack.gd<>uid://cprmp56avc76g::::res://assets/boss/Boss attack.png<>uid://c7p6rmhs5bxy3::::res://assets/sfx/hitHurt_balls.wav
+::res://scene/particles/::1719396635
+asteroid_destroyed.tscn::PackedScene::6643896832205164734::1719396635::0::1::::<><>::res://script/particle/particle_destroyed.gd<>uid://b001t7ufdgwwg::::res://assets/sfx/explosion.wav
+ball_destroyed.tscn::PackedScene::6921293971137188125::1719396635::0::1::::<><>::res://script/particle/particle_destroyed.gd<>uid://b001t7ufdgwwg::::res://assets/sfx/explosion.wav
+blood.tscn::PackedScene::4419983582258368762::1719396635::0::1::::<><>::res://script/particle/particle_destroyed.gd<>uid://d1fkgggmddfuc::::res://assets/sfx/hitHurt.wav
+glitch_effect.tscn::PackedScene::2939888897550115015::1719396635::0::1::::<><>::uid://bciq1t5jkkkhg::::res://assets/boss/glitch summon attack.png<>uid://d0cgeu745byse::::res://assets/sfx/glitch.mp3
+::res://scene/ui/::1719653871
+code_input.tscn::PackedScene::8878256992890364611::1719653871::0::1::::<><>::res://script/ui/code_input.gd<>uid://4pobj3ifbvfm::::res://scene/ui/token.tscn
+death_ui.tscn::PackedScene::291656451839834635::1719653870::0::1::::<><>::uid://88q22y4bv7wo::::res://assets/buttons/UI base (red).png<>res://script/ui/death_ui.gd<>uid://2ifdmb2tm01t::::res://assets/buttons/button template diy (red).png<>uid://cpme3nv0usjkb::::res://assets/font/Not_Jam_UI_15.ttf
+main_menu.tscn::PackedScene::8734328630243926206::1719653870::0::1::::<><>::res://script/ui/main_menu.gd<>uid://bh6qofkks4vvn::::res://assets/background/main screen.png<>uid://dvsve1jel1ger::::res://assets/buttons/play button.png<>uid://dcksey42224vl::::res://assets/bgm/412344__michorvath__rivalry-8-bit-music-loop.wav
+token.tscn::PackedScene::2067294471841374946::1719653870::0::1::::<><>::uid://dq2ukygndohtr::::res://assets/background/bg.png<>uid://c34q5fbk1md70::::res://assets/buttons/UI base template (blue).png<>uid://cpme3nv0usjkb::::res://assets/font/Not_Jam_UI_15.ttf<>uid://bme8oyh2d46vt::::res://assets/buttons/button template filled diy (blue).png<>uid://dscsyae8kq7a0::::res://assets/buttons/button template diy (blue).png
+::res://script/::1719409572
+boss.gd::GDScript::-1::1718867399::0::1::::<>StaticBody2D<>::
+broken_platform.gd::GDScript::-1::1718726226::0::1::::<>StaticBody2D<>::
+bullet.gd::GDScript::-1::1718871353::0::1::::<>Area2D<>::
+dash.gd::GDScript::-1::1716108883::0::1::::<>Node2D<>::
+dash_sprite.gd::GDScript::-1::1716103094::0::1::::<>Sprite2D<>::
+enemy_attack.gd::GDScript::-1::1718890697::0::1::::<>Area2D<>::
+galactic_leap.gd::GDScript::-1::1719398757::0::1::::<>Node2D<>::
+moving_enemy.gd::GDScript::-1::1718866860::0::1::::<>StaticBody2D<>::
+platform.gd::GDScript::-1::1718625900::0::1::::<>StaticBody2D<>::
+platform_on_boss.gd::GDScript::-1::1718856476::0::1::::<>StaticBody2D<>::
+player.gd::GDScript::-1::1718897173::0::1::::<>CharacterBody2D<>::
+side_platform_on_boss.gd::GDScript::-1::1718876311::0::1::::<>StaticBody2D<>::
+static_enemy.gd::GDScript::-1::1718890242::0::1::::<>StaticBody2D<>::
+tramp_platform.gd::GDScript::-1::1716032044::0::1::::<>StaticBody2D<>::
+weapon.gd::GDScript::-1::1719409572::0::1::::<>Sprite2D<>::
+::res://script/belong_to_boss/::1718889432
+asteroid.gd::GDScript::-1::1718889407::0::1::::<>Area2D<>::
+asteroid_bomb.gd::GDScript::-1::1718362721::0::1::::<>Area2D<>::
+eye_follow.gd::GDScript::-1::1718632702::0::1::::<>Sprite2D<>::
+normal_attack.gd::GDScript::-1::1718889432::0::1::::<>Area2D<>::
+::res://script/particle/::1718871407
+particle_destroyed.gd::GDScript::-1::1718871407::0::1::::<>CPUParticles2D<>::
+::res://script/ui/::1719653358
+code_input.gd::GDScript::-1::1719653343::0::1::::<>Node<>::
+death_ui.gd::GDScript::-1::1719398476::0::1::::<>Control<>::
+main_menu.gd::GDScript::-1::1719653358::0::1::::<>Control<>::
+token.gd::GDScript::-1::1719652854::0::1::::<>Control<>::

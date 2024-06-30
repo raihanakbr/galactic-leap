@@ -1,0 +1,4 @@
+res://scene/ui/token.tscn
+res://scene/ui/death_ui.tscn
+res://scene/player.tscn
+res://script/ui/main_menu.gd

@@ -145,5 +145,7 @@ label_settings = SubResource("LabelSettings_lrayk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]

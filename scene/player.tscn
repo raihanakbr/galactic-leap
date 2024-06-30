@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_6epck"]
 [ext_resource type="Texture2D" uid="uid://y54uk0uel3i7" path="res://assets/character/Vim Shoot (No Gun).png" id="3_8igj4"]
+[ext_resource type="Texture2D" uid="uid://bggu2s76l3p7t" path="res://assets/character/Gun Sprite V3.png" id="3_arx38"]
 [ext_resource type="Script" path="res://script/weapon.gd" id="3_yweqr"]
-[ext_resource type="Texture2D" uid="uid://2olif1p0r8fd" path="res://assets/character/Gun Only Rotated.png" id="4_mgyrx"]
 [ext_resource type="PackedScene" uid="uid://daj3aqx71v4i1" path="res://scene/dash.tscn" id="5_kl1wj"]
 [ext_resource type="AudioStream" uid="uid://dsf8keblxxxot" path="res://assets/sfx/laserShoot.wav" id="6_k32jj"]
 [ext_resource type="AudioStream" uid="uid://3r32r13l8dum" path="res://assets/sfx/jump.wav" id="8_bbx74"]
@@ -23,17 +23,17 @@ scale = Vector2(0.95, 0.95)
 texture = ExtResource("3_8igj4")
 hframes = 3
 vframes = 2
-frame = 2
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 1)
 shape = SubResource("CapsuleShape2D_j7bu2")
 
 [node name="weapon" type="Sprite2D" parent="."]
-position = Vector2(-15, -19)
-texture = ExtResource("4_mgyrx")
-flip_h = true
-flip_v = true
+position = Vector2(11, -15)
+texture = ExtResource("3_arx38")
+hframes = 2
+frame = 1
 script = ExtResource("3_yweqr")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="weapon"]
